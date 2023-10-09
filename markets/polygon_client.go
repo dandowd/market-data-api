@@ -12,16 +12,15 @@ type polygonClient struct {
   client *polygon.Client
 }
 
-func NewPolygonClient(config *config.Config) *polygonClient {
+func NewPolygonClient(config *config.Config) MarketClient {
 	return &polygonClient{
 		client: polygon.New(config.PolygonApiKey),
 	}
 }
 
-func (c *polygonClient) GetLatestPrice(tickerSymbol string) (*SymbolInfo, error) {
+func (c *polygonClient) GetLatest(tickerSymbol string) (*SymbolInfo, error) {
 	resp, err := c.client.GetLastTrade(context.Background(), &models.GetLastTradeParams{ Ticker: tickerSymbol })
 	if err != nil {
-		// Add logging here
 		return nil, err
 	}
 

@@ -6,5 +6,5 @@ type SymbolInfo struct {
 }
 
 type MarketClient interface {
-  GetLatest(tickerSymbol string) (SymbolInfo, error)
+  GetLatest(tickerSymbol string) (*SymbolInfo, error)
 }
