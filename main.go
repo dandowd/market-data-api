@@ -26,7 +26,7 @@ func main() {
 
 		if err != nil {
 			c.JSON(500, gin.H{
-				"Error while fetching symbol data, please try again later": err,
+				"Error": "Error getting symbol info, please try again later",
 			})
 		}
 
