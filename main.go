@@ -28,8 +28,9 @@ func main() {
 			c.JSON(500, gin.H{
 				"Error while fetching symbol data, please try again later": err,
 			})
-			return
 		}
+
+		c.IndentedJSON(200, symbolInfo)
 	})
 
 	r.Run() // listen and serve on
