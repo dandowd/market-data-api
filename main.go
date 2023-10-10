@@ -26,8 +26,9 @@ func main() {
 
 		if err != nil {
 			c.JSON(500, gin.H{
-				"Error": "Error getting symbol info, please try again later",
+				"message": "Error getting symbol info, please try again later",
 			})
+			return
 		}
 
 		c.IndentedJSON(200, symbolInfo)
