@@ -1,7 +1,6 @@
 package markets
 
 import (
-	"errors"
 	"stock-price-api/config"
 
 	"github.com/alpacahq/alpaca-trade-api-go/v3/marketdata"
@@ -21,7 +20,7 @@ func (a *AlpacaClient) GetLatest(tickerSymbol string) (*SymbolInfo, error) {
 	}
 
 	if len(tradeInfo) == 0 {
-		return nil, errors.New("No trade info found")
+		return nil, nil
 	}
 
 	return &SymbolInfo{

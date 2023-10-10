@@ -31,6 +31,13 @@ func main() {
 			return
 		}
 
+		if symbolInfo == nil {
+			c.JSON(404, gin.H{
+				"message": "Symbol not found",
+			})
+			return
+		}
+
 		c.IndentedJSON(200, symbolInfo)
 	})
 
