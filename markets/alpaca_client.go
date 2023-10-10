@@ -27,8 +27,10 @@ func (a *AlpacaClient) GetLatest(tickerSymbol string) (*SymbolInfo, error) {
 }
 
 func NewAlpacaClient() MarketClient {
+	logger := config.GetLogger()
 	config := config.GetVariables()
 	return &AlpacaClient{
+		logger: logger,
 		client: alpaca.NewClient(alpaca.ClientOpts{
 			APIKey:    config.AlpacaApiKey,
 			APISecret: config.AlpacaApiSecret,
