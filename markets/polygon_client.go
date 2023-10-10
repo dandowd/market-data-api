@@ -10,7 +10,7 @@ import (
 )
 
 type polygonClient struct {
-  client *polygon.Client
+	client *polygon.Client
 	config *config.Config
 }
 
@@ -22,7 +22,7 @@ func NewPolygonClient(config *config.Config) MarketClient {
 }
 
 func (c *polygonClient) GetLatest(tickerSymbol string) (*SymbolInfo, error) {
-	resp, err := c.client.GetLastTrade(context.Background(), &models.GetLastTradeParams{ Ticker: tickerSymbol })
+	resp, err := c.client.GetLastTrade(context.Background(), &models.GetLastTradeParams{Ticker: tickerSymbol})
 	if err != nil {
 		c.config.Logger.Error("Error getting last trade", zap.Error(err))
 		return nil, err
@@ -30,6 +30,6 @@ func (c *polygonClient) GetLatest(tickerSymbol string) (*SymbolInfo, error) {
 
 	return &SymbolInfo{
 		Symbol: tickerSymbol,
-		Price: resp.Results.Price,
+		Price:  resp.Results.Price,
 	}, nil
 }
