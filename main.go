@@ -17,7 +17,7 @@ func main() {
 
 		if symbol == "" {
 			c.JSON(400, gin.H{
-				"Error": "Please provide a symbol",
+				"message": "Missing symbol in url path",
 			})
 			return
 		}
