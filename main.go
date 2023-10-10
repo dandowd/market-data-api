@@ -9,7 +9,7 @@ import (
 
 func main() {
 	config := config.NewConfig()
-	marketClient := markets.NewPolygonClient(config)	
+	marketClient := markets.NewAlpacaClient(config)
 
 	r := gin.Default()
 	r.GET("/live/:symbol", func(c *gin.Context) {
