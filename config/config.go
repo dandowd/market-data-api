@@ -35,3 +35,7 @@ func Init() {
 func GetVariables() *Config {
 	return configVars
 }
+
+func GetLogger() *zap.Logger {
+	return logger
+}
