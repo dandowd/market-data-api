@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	config := config.NewConfig()
-	marketClient := markets.NewAlpacaClient(config)
+	config.Init()
+	marketClient := markets.NewAlpacaClient()
 
 	r := gin.Default()
 	r.GET("/live/:symbol", func(c *gin.Context) {

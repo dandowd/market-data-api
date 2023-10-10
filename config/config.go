@@ -11,20 +11,27 @@ type Config struct {
 	AlpacaApiKey     string
 	AlpacaApiSecret  string
 	AlpacaApiBaseUrl string
-	Logger           *zap.Logger
 }
 
-func NewConfig() *Config {
-	logger, nil := zap.NewProduction()
-	if nil != nil {
-		panic("Failed to create logger")
-	}
+var configVars *Config
+var logger *zap.Logger
 
-	return &Config{
+func Init() {
+	configVars = &Config{
 		AlpacaApiKey:     os.Getenv("ALPACA_API_KEY"),
 		AlpacaApiSecret:  os.Getenv("ALPACA_API_SECRET"),
 		AlpacaApiBaseUrl: os.Getenv("ALPACA_API_BASE_URL"),
 		PolygonApiKey:    os.Getenv("POLYGON_API_KEY"),
-		Logger:           logger,
 	}
+
+	zapLogger, nil := zap.NewProduction()
+	if nil != nil {
+		panic("Failed to create logger")
+	}
+
+	logger = zapLogger
+}
+
+func GetVariables() *Config {
+	return configVars
 }
