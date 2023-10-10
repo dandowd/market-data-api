@@ -7,8 +7,11 @@ import (
 )
 
 type Config struct {
-	PolygonApiKey string
-	Logger *zap.Logger
+	PolygonApiKey    string
+	AlpacaApiKey     string
+	AlpacaApiSecret  string
+	AlpacaApiBaseUrl string
+	Logger           *zap.Logger
 }
 
 func NewConfig() *Config {
@@ -16,9 +19,12 @@ func NewConfig() *Config {
 	if nil != nil {
 		panic("Failed to create logger")
 	}
-	
+
 	return &Config{
+		AlpacaApiKey:     os.Getenv("ALPACA_API_KEY"),
+		AlpacaApiSecret:  os.Getenv("ALPACA_API_SECRET"),
+		AlpacaApiBaseUrl: os.Getenv("ALPACA_API_BASE_URL"),
 		PolygonApiKey:    os.Getenv("POLYGON_API_KEY"),
-		Logger: logger,
+		Logger:           logger,
 	}
 }
